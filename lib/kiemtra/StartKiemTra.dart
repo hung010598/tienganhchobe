@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:tienganhchobe/layout_kiemtra/layout_test.dart';
+import 'package:kids/layout_kiemtra/layout_test.dart';
+import 'package:kids/layout_kiemtra/test2.dart';
+import 'package:kids/layout_kiemtra/test3.dart';
+import 'package:kids/layout_kiemtra/test4.dart';
+import 'package:kids/layout_kiemtra/test5.dart';
+import 'package:kids/layout_kiemtra/test6.dart';
+import 'package:kids/layout_kiemtra/test7.dart';
+import 'package:kids/layout_kiemtra/test8.dart';
+import 'package:kids/startscreen.dart';
 
 class StartKiemTra extends StatelessWidget {
 
@@ -27,7 +35,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return WillPopScope(
+      onWillPop: ()async{
+        Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (context) => new StartScreen()));
+        return true;
+      },
+      child: new Scaffold(
 
       body:
       new Container(
@@ -40,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
               crossAxisCount: 2,
               mainAxisSpacing: 0.0,
               crossAxisSpacing: 0.0,
-              childAspectRatio: 2.0,
+              childAspectRatio: 1.0,
 
               padding: const EdgeInsets.all(40.0),
               children: <Widget>[
@@ -50,8 +63,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: <Widget>[
                         new GestureDetector(
                           onTap: (){
-                            Navigator.push(
-                              context,
+                            Navigator.of(context).pushReplacement(
+
                               new MaterialPageRoute(builder: (context) => new Bai1()),
                             );
                           },
@@ -71,9 +84,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: <Widget>[
                         new GestureDetector(
                           onTap: (){
-                            Navigator.push(
-                              context,
-                              new MaterialPageRoute(builder: (context) => new Bai1()),
+                            Navigator.of(context).pushReplacement(
+                              new MaterialPageRoute(builder: (context) => new Bai2()),
                             );
                           },
                           child: new Image.asset('assets/hai.png', fit: BoxFit.scaleDown,width: 100.0,
@@ -88,9 +100,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: <Widget>[
                         new GestureDetector(
                           onTap: (){
-                            Navigator.push(
-                              context,
-                              new MaterialPageRoute(builder: (context) => new Bai1()),
+                            Navigator.of(context).pushReplacement(
+                              new MaterialPageRoute(builder: (context) => new Bai3()),
                             );
                           },
                           child: new Image.asset('assets/ba.png', fit: BoxFit.scaleDown,width: 100.0,
@@ -105,9 +116,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: <Widget>[
                         new GestureDetector(
                           onTap: (){
-                            Navigator.push(
-                              context,
-                              new MaterialPageRoute(builder: (context) => new Bai1()),
+                            Navigator.of(context).pushReplacement(
+                              new MaterialPageRoute(builder: (context) => new Bai4()),
                             );
                           },
                           child: new Image.asset('assets/bon.png', fit: BoxFit.scaleDown,width: 100.0,
@@ -122,9 +132,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: <Widget>[
                         new GestureDetector(
                           onTap: (){
-                            Navigator.push(
-                              context,
-                              new MaterialPageRoute(builder: (context) => new Bai1()),
+                            Navigator.of(context).pushReplacement(
+                              new MaterialPageRoute(builder: (context) => new Bai5()),
                             );
                           },
                           child: new Image.asset('assets/nam.png', fit: BoxFit.scaleDown,width: 100.0,
@@ -139,9 +148,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: <Widget>[
                         new GestureDetector(
                           onTap: (){
-                            Navigator.push(
-                              context,
-                              new MaterialPageRoute(builder: (context) => new Bai1()),
+                            Navigator.of(context).pushReplacement(
+                              new MaterialPageRoute(builder: (context) => new Bai6()),
                             );
                           },
                           child: new Image.asset('assets/sau.png', fit: BoxFit.scaleDown,width: 100.0,
@@ -156,9 +164,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: <Widget>[
                         new GestureDetector(
                           onTap: (){
-                            Navigator.push(
-                              context,
-                              new MaterialPageRoute(builder: (context) => new Bai1()),
+                            Navigator.of(context).pushReplacement(
+                              new MaterialPageRoute(builder: (context) => new Bai7()),
                             );
                           },
                           child: new Image.asset('assets/bay.png', fit: BoxFit.scaleDown,width: 100.0,
@@ -173,9 +180,8 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: <Widget>[
                         new GestureDetector(
                           onTap: (){
-                            Navigator.push(
-                              context,
-                              new MaterialPageRoute(builder: (context) => new Bai1()),
+                            Navigator.of(context).pushReplacement(
+                              new MaterialPageRoute(builder: (context) => new Bai8()),
                             );
                           },
                           child: new Image.asset('assets/tam.png', fit: BoxFit.scaleDown,width: 100.0,
@@ -189,7 +195,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           ),
         )
-
+      )
       ),
     );
   }

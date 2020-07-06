@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tienganhchobe/giaitri/video_model.dart';
-import 'package:tienganhchobe/giaitri/video_screen.dart';
+import 'package:kids/giaitri/video_model.dart';
+import 'package:kids/giaitri/video_screen.dart';
 
 import 'api_service.dart';
 import 'channel_model.dart';
@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   _initChannel() async {
     Channel channel = await APIService.instance
-        .fetchChannel(channelId: 'UC6Dy0rQ6zDnQuHQ1EeErGUA');
+        .fetchChannel(channelId: 'UC1lVspJLJ3P3rP1zxQLqZcA');
     setState(() {
       _channel = channel;
     });

@@ -1,7 +1,7 @@
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:tienganhchobe/dongvat/DongVat.dart';
+import 'package:kids/dongvat/DongVat.dart';
 import 'dataqua.dart';
 class ListQua extends StatefulWidget {
   @override
@@ -22,12 +22,14 @@ class ListViewExampleState extends State<ListQua> {
     }
     return lstQua.map((qua){
       var container = Container(
+        padding: const EdgeInsets.only(left: 32.0, right: 16.0,top: 16.0, bottom: 16.0),
         decoration: index % 2 == 0?
         new BoxDecoration(color: const Color(0xFFb0e0e6)):
         new BoxDecoration(
             color: const Color(0xFF7ec0ee)
         ),
         child: new Column(
+          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             new GestureDetector(
               onTap: () async {
@@ -35,13 +37,23 @@ class ListViewExampleState extends State<ListQua> {
               },
               child: new Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
-                  new Image.asset(qua.image, fit: BoxFit.scaleDown,),
+                  new Image.asset(qua.image, fit: BoxFit.scaleDown,width: 70.0,
+                    height: 70.0,),
                   new Column(
                     children: <Widget>[
-                      new Text(qua.englishName),
-                      new Text(qua.vnName)
+                      new Text(qua.englishName,
+                        style: TextStyle(
+                            decoration: TextDecoration.none,
+                            fontSize: 20.0
+                        ),),
+                      new Text(qua.vnName,
+                        style: TextStyle(
+                            decoration: TextDecoration.none,
+                            fontSize: 20.0
+                        ),),
                     ],
                   )
                 ],

@@ -1,6 +1,7 @@
 import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:kids/BaiHoc.dart';
 class So extends StatelessWidget {
 
   @override
@@ -34,7 +35,12 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return WillPopScope(
+        onWillPop: ()async{
+      Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (context) => new BaiHoc()));
+      return true;
+    },
+    child: new Scaffold(
       body:
       new Container(
         child:
@@ -182,7 +188,7 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.only(top: 40.0),
         alignment: Alignment.center,
       ),
-
+    )
     );
 
   }

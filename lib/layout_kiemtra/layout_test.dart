@@ -4,8 +4,8 @@ import 'dart:math';
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:tienganhchobe/kiemtra/StartKiemTra.dart';
-import 'package:tienganhchobe/kiemtra/test1.dart';
+import 'package:kids/kiemtra/StartKiemTra.dart';
+import 'package:kids/kiemtra/test1.dart';
 
 class Bai1 extends StatelessWidget {
 
@@ -64,12 +64,21 @@ class _MyHomePageState extends State<MyHomePage> {
     //lstTest = lstTest1[1];
   }
 
+  void readDungSai(url) async{
+    audioPlayer = AudioPlayer();
+
+    audioPlayer = await AudioCache().play(url);
+  }
   bool CheckAnswer (urlAnswer)
   {
-    if(urlAnswer == url)
+    if(urlAnswer == url) {
+      readDungSai("Mp3/dung.mp3");
       return true;
-    else
+    }
+    else {
+      readDungSai("Mp3/sai.mp3");
       return false;
+    }
   }
   void _incrementCounter(String urlAnswer) {
 
@@ -77,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
     {
       index++;
 
-      if(index < 8)
+      if(index < 10)
         {
           setState(() {
             dapan = Random().nextInt(3);
@@ -85,7 +94,7 @@ class _MyHomePageState extends State<MyHomePage> {
           });
         }
       else
-        Navigator.push(
+        Navigator.pushReplacement(
           context,
           new MaterialPageRoute(builder: (context) => new StartKiemTra()),
         );
@@ -95,86 +104,112 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     read();
-    return new Scaffold(
-      body:new Column(
-        children: <Widget>[
-          new Container(
-            padding: const EdgeInsets.only(top: 50.0),
-            child: new GestureDetector(
-              onTap: () async{
-                read();
-              },
-              child: new Image.asset('assets/sound.png', fit: BoxFit.scaleDown,),
+    return WillPopScope(
+        onWillPop: ()async{
+      Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (context) => new StartKiemTra()));
+      return true;
+    },
+    child: new Scaffold(
+
+      body:new Container(
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+        image: DecorationImage(
+        image: AssetImage("assets/study.jpg"), fit: BoxFit.fill)),
+        child:new Column(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            new Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.only(top: 32.0, bottom: 32.0),
+              child: new Text("Câu hỏi số: "+(index+1).toString()+"/10",
+                style: TextStyle(
+                  color: Colors.red,
+                  fontSize: 24.0
+                ),
+              ),
             ),
-          ),
-          new Container(
-            height: 600.0,
-            child:
-            new GridView.count(
-                crossAxisCount: 2,
-                mainAxisSpacing: 4.0,
-                crossAxisSpacing: 4.0,
-                childAspectRatio: 1.0,
-
-                children: <Widget>[
-                  new Container(
-                      child: new Column(
-                        children: <Widget>[
-                          new GestureDetector(
-                            child: new Image.asset(lstTest.image1, fit: BoxFit.scaleDown,width: 100.0,height: 100.0),
-                            onTap: () async {
-                              //audioPlayer = await AudioCache().loop("Mp3/a.mp3");
-                              _incrementCounter(lstTest.mp3Url1);
-                            },
-                          ),
-                        ],
-                      )
-                  ),
-
-                  new Container(
-                      child: new Column(
-                        children: <Widget>[
-                          new GestureDetector(
-                            onTap: () async {
-                              _incrementCounter(lstTest.mp3Url2);
-                            },
-                            child: new Image.asset(lstTest.image2, fit: BoxFit.scaleDown,width: 100.0,height: 100.0),
-                          ),
-                        ],
-                      )
-                  ),
-
-                  new Container(
-                      child: new Column(
-                        children: <Widget>[
-                          new GestureDetector(
-                            onTap: (){
-                              _incrementCounter(lstTest.mp3Url3);
-                            },
-                            child: new Image.asset(lstTest.image3, fit: BoxFit.scaleDown,width: 100.0,height: 100.0),
-                          ),
-                        ],
-                      )
-                  ),
-
-                  new Container(
-                      child: new Column(
-                        children: <Widget>[
-                          new GestureDetector(
-                            onTap: (){
-                              _incrementCounter(lstTest.mp3Url4);
-                            },
-                            child: new Image.asset(lstTest.image4, fit: BoxFit.scaleDown,width: 100.0,height: 100.0),
-                          ),
-                        ],
-                      )
-                  )
-                ]
-
+            new Container(
+              padding: const EdgeInsets.only(top: 50.0),
+              child: new GestureDetector(
+                onTap: () async{
+                  read();
+                },
+                child: new Image.asset('assets/sound.png', fit: BoxFit.scaleDown,),
+              ),
             ),
-          ),
-        ],
+            new Container(
+              height:400.0,
+              child:
+              new GridView.count(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 4.0,
+                  crossAxisSpacing: 4.0,
+                  childAspectRatio: 1.0,
+
+                  children: <Widget>[
+                    new Container(
+                        child: new Column(
+                          children: <Widget>[
+                            new GestureDetector(
+                              child: new Image.asset(lstTest.image1, fit: BoxFit.scaleDown,width: 100.0,height: 100.0),
+                              onTap: () async {
+                                //audioPlayer = await AudioCache().loop("Mp3/a.mp3");
+                                _incrementCounter(lstTest.mp3Url1);
+                              },
+                            ),
+                          ],
+                        )
+                    ),
+
+                    new Container(
+                        child: new Column(
+                          children: <Widget>[
+                            new GestureDetector(
+                              onTap: () async {
+                                _incrementCounter(lstTest.mp3Url2);
+                              },
+                              child: new Image.asset(lstTest.image2, fit: BoxFit.scaleDown,width: 100.0,height: 100.0),
+                            ),
+                          ],
+                        )
+                    ),
+
+                    new Container(
+                        child: new Column(
+                          children: <Widget>[
+                            new GestureDetector(
+                              onTap: (){
+                                _incrementCounter(lstTest.mp3Url3);
+                              },
+                              child: new Image.asset(lstTest.image3, fit: BoxFit.scaleDown,width: 100.0,height: 100.0),
+                            ),
+                          ],
+                        )
+                    ),
+
+                    new Container(
+                        child: new Column(
+                          children: <Widget>[
+                            new GestureDetector(
+                              onTap: (){
+                                _incrementCounter(lstTest.mp3Url4);
+                              },
+                              child: new Image.asset(lstTest.image4, fit: BoxFit.scaleDown,width: 100.0,height: 100.0),
+                            ),
+                          ],
+                        )
+                    )
+                  ]
+
+              ),
+            ),
+          ],
+        )
       )
+    )
     );
 
   }

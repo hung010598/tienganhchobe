@@ -1,6 +1,7 @@
 import 'package:audioplayers/audio_cache.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:kids/BaiHoc.dart';
 class BangChu extends StatelessWidget {
 
   @override
@@ -17,7 +18,11 @@ class BangChu extends StatelessWidget {
     );
   }
 }
+class ListenOne extends StatefulWidget {
 
+  @override
+  State<StatefulWidget> createState() => _MyHomePageState();
+}
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key}) : super(key: key);
   @override
@@ -34,9 +39,16 @@ class _MyHomePageState extends State<MyHomePage> {
   }
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return WillPopScope(
+        onWillPop: ()async{
+          Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (context) => new BaiHoc()));
+          return true;
+        },
+      child: new Scaffold(
+
       body:
       new Container(
+        color: const Color(0xFFdbe6a4),
         child:
         new GridView.count(
             crossAxisCount: 3,
@@ -390,7 +402,7 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.only(top: 40.0),
         alignment: Alignment.center,
       ),
-
+      )
     );
 
   }

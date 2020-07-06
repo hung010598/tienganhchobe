@@ -1,0 +1,7 @@
+Learning Kids là phần mềm dành cho trẻ em từ 2 đến 5 tuổi trở lên.
+Phần mềm gồm có 4 chức năng.
+Thứ nhất là: Bài học: gồm có 8 phần(Bảng chữ, Bảng số, Động vật, Màu sắc, Trường học, Quốc gia, Hoa, Quả).
+Thứ hai là: Kiểm tra: gồm có 8 bài, mỗi bài gồm 10 câu hỏi
+Thứ ba là: Giải trí: Load video từ youtube
+Thứ tư là: Luyện nghe: Gồm 7 bài nghe
+Giúp cho trẻ em tăng khả năng tự hoc tiếng anh.

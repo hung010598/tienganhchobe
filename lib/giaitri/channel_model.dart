@@ -1,6 +1,6 @@
 
 
-import 'package:tienganhchobe/giaitri/video_model.dart';
+import 'package:kids/giaitri/video_model.dart';
 
 class Channel {
 

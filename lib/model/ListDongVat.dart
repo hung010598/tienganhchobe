@@ -1,7 +1,7 @@
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:tienganhchobe/dongvat/DongVat.dart';
+import 'package:kids/dongvat/DongVat.dart';
 import 'datadongvat.dart';
 class ListDongVat extends StatefulWidget {
   @override

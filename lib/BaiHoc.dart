@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:tienganhchobe/BangChu.dart';
-import 'package:tienganhchobe/dongvat/layout.dart';
-import 'package:tienganhchobe/so.dart';
+import 'package:kids/BangChu.dart';
+import 'package:kids/dongvat/layout.dart';
+import 'package:kids/hoa/layouthoa.dart';
+import 'package:kids/mausac/layoutmausac.dart';
+import 'package:kids/mausac/mausac.dart';
+import 'package:kids/qua/layoutqua.dart';
+import 'package:kids/quocgia/layoutquocgia.dart';
+import 'package:kids/so.dart';
+import 'package:kids/startscreen.dart';
+import 'package:kids/truonghoc/layouttruonghoc.dart';
 
 class BaiHoc extends StatelessWidget {
 
@@ -13,7 +20,7 @@ class BaiHoc extends StatelessWidget {
         primarySwatch: Colors.blue,
         primaryColor: const Color(0xFF2196f3),
         accentColor: const Color(0xFF2196f3),
-        canvasColor: const Color(0xFFdbe6a4),
+        canvasColor: const Color(0xFFfafafa),
       ),
       home: new MyHomePage(),
     );
@@ -29,9 +36,15 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return WillPopScope(
+        onWillPop: ()async{
+          Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (context) => new StartScreen()));
+          return true;
+        },
+      child: new Scaffold(
       body:
       new Container(
+        color:const Color(0xFFdbe6a4) ,
         child:
         new GridView.count(
             crossAxisCount: 2,
@@ -45,8 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: <Widget>[
                       new GestureDetector(
                         onTap: (){
-                          Navigator.push(
-                            context,
+                          Navigator.of(context).pushReplacement(
                             new MaterialPageRoute(builder: (context) => new BangChu()),
                           );
                         },
@@ -62,8 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: <Widget>[
                       new GestureDetector(
                         onTap: (){
-                          Navigator.push(
-                            context,
+                          Navigator.of(context).pushReplacement(
                             new MaterialPageRoute(builder: (context) => new So()),
                           );
                         },
@@ -79,8 +90,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: <Widget>[
                       new GestureDetector(
                         onTap: (){
-                          Navigator.push(
-                            context,
+                          Navigator.of(context).pushReplacement(
                             new MaterialPageRoute(builder: (context) => new LayoutDongVat()),
                           );
                         },
@@ -94,7 +104,15 @@ class _MyHomePageState extends State<MyHomePage> {
               new Container(
                   child: new Column(
                     children: <Widget>[
-                      new Image.asset('assets/logomau.png', fit: BoxFit.scaleDown,),
+                      new GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).pushReplacement(
+                            new MaterialPageRoute(builder: (context) => new LayoutMauSac()),
+                          );
+                        },
+                        child: new Image.asset('assets/logomau.png', fit: BoxFit.scaleDown,),
+                      ),
+
                       new Text("Màu sắc")
                     ],
                   )
@@ -103,7 +121,15 @@ class _MyHomePageState extends State<MyHomePage> {
               new Container(
                   child: new Column(
                     children: <Widget>[
-                      new Image.asset('assets/logotruong.png', fit: BoxFit.scaleDown,),
+                      new GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).pushReplacement(
+                            new MaterialPageRoute(builder: (context) => new LayoutTruongHoc()),
+                          );
+                        },
+                        child: new Image.asset('assets/logotruong.png', fit: BoxFit.scaleDown,),
+                      ),
+
                       new Text("Trường học")
                     ],
                   )
@@ -112,7 +138,15 @@ class _MyHomePageState extends State<MyHomePage> {
               new Container(
                   child: new Column(
                     children: <Widget>[
-                      new Image.asset('assets/logoqg.png', fit: BoxFit.scaleDown,),
+                      new GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).pushReplacement(
+                            new MaterialPageRoute(builder: (context) => new LayoutQuocGia()),
+                          );
+                        },
+                        child: new Image.asset('assets/logoqg.png', fit: BoxFit.scaleDown,),
+                      ),
+
                       new Text("Quốc gia")
                     ],
                   )
@@ -121,7 +155,15 @@ class _MyHomePageState extends State<MyHomePage> {
               new Container(
                   child: new Column(
                     children: <Widget>[
-                      new Image.asset('assets/logoqua.png', fit: BoxFit.scaleDown,),
+                      new GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).pushReplacement(
+                            new MaterialPageRoute(builder: (context) => new LayoutQua()),
+                          );
+                        },
+                        child: new Image.asset('assets/logoqua.png', fit: BoxFit.scaleDown,),
+                      ),
+
                       new Text("Quả")
                     ],
                   )
@@ -130,7 +172,15 @@ class _MyHomePageState extends State<MyHomePage> {
               new Container(
                   child: new Column(
                     children: <Widget>[
-                      new Image.asset('assets/logohoa.png', fit: BoxFit.scaleDown,),
+                      new GestureDetector(
+                        onTap: (){
+                          Navigator.of(context).pushReplacement(
+                            new MaterialPageRoute(builder: (context) => new LayoutHoa()),
+                          );
+                        },
+                        child: new Image.asset('assets/logohoa.png', fit: BoxFit.scaleDown,),
+                      ),
+
                       new Text("Hoa")
                     ],
                   )
@@ -143,7 +193,7 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.only(top: 40.0),
         alignment: Alignment.center,
       ),
-
+      )
     );
   }
 }

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tienganhchobe/BaiHoc.dart';
-import 'package:tienganhchobe/kiemtra/StartKiemTra.dart';
-import 'package:tienganhchobe/layout_kiemtra/layout_test.dart';
+import 'package:kids/BaiHoc.dart';
+import 'package:kids/kiemtra/StartKiemTra.dart';
+import 'package:kids/layout_kiemtra/layout_test.dart';
+import 'package:kids/luyennghe/layout_luyennghe.dart';
+import 'package:kids/main.dart';
 
 import 'giaitri/giaitri.dart';
-
 class StartScreen extends StatelessWidget {
 
   @override
@@ -31,7 +32,12 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return WillPopScope(
+        onWillPop: ()async{
+          Navigator.pushReplacement(context,new MaterialPageRoute(builder: (context) => HomePage()));
+          return true;
+        },
+      child: new Scaffold(
 
       body:
       new Container(
@@ -46,8 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               new GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                    context,
+                  Navigator.of(context).pushReplacement(
                     new MaterialPageRoute(builder: (context) => new BaiHoc()),
                   );
                 },
@@ -60,8 +65,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
               new GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                    context,
+                  Navigator.of(context).pushReplacement(
                     new MaterialPageRoute(
                         builder: (context) => new StartKiemTra()),
                   );
@@ -74,8 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
               new GestureDetector(
                 onTap: () {
-                  Navigator.push(
-                    context,
+                  Navigator.of(context).pushReplacement(
                     new MaterialPageRoute(builder: (context) => new GiaiTri()),
                   );
                 },
@@ -87,12 +90,20 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
 
-              new Image.asset(
-                'assets/luyennghe.png',
-                fit: BoxFit.scaleDown,
-                width: 100.0,
-                height: 100.0,
-              )
+              new GestureDetector(
+                onTap: () {
+                  Navigator.pushReplacement(context,
+                    new MaterialPageRoute(builder: (context) => LuyenNghe()
+                    ),
+                  );
+                },
+                child: new Image.asset(
+                  'assets/luyennghe.png',
+                  width: 100.0,
+                  height: 100.0,
+                  fit: BoxFit.scaleDown,
+                ),
+              ),
             ]
 
         ),
@@ -100,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.only(top: 32.0),
         alignment: Alignment.center,
       ),
-
+      )
     );
   }
 }

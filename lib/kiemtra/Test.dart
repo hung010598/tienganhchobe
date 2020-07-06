@@ -1,11 +1,11 @@
-import 'package:tienganhchobe/kiemtra/test1.dart';
-import 'package:tienganhchobe/kiemtra/test2.dart';
-import 'package:tienganhchobe/kiemtra/test3.dart';
-import 'package:tienganhchobe/kiemtra/test4.dart';
-import 'package:tienganhchobe/kiemtra/test5.dart';
-import 'package:tienganhchobe/kiemtra/test6.dart';
-import 'package:tienganhchobe/kiemtra/test7.dart';
-import 'package:tienganhchobe/kiemtra/test8.dart';
+import 'package:kids/kiemtra/test1.dart';
+import 'package:kids/kiemtra/test2.dart';
+import 'package:kids/kiemtra/test3.dart';
+import 'package:kids/kiemtra/test4.dart';
+import 'package:kids/kiemtra/test5.dart';
+import 'package:kids/kiemtra/test6.dart';
+import 'package:kids/kiemtra/test7.dart';
+import 'package:kids/kiemtra/test8.dart';
 
 class Test{
   final Test1 _test1 = new Test1();

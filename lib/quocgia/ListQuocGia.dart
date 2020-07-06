@@ -1,8 +1,8 @@
 import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:tienganhchobe/dongvat/DongVat.dart';
-import 'package:tienganhchobe/quocgia/quocgia.dart';
+import 'package:kids/dongvat/DongVat.dart';
+import 'package:kids/quocgia/quocgia.dart';
 import 'dataquocgia.dart';
 class ListQuocGia extends StatefulWidget {
   @override
@@ -22,13 +22,16 @@ class ListViewExampleState extends State<ListQuocGia> {
       audioPlayer = await AudioCache().play(url);
     }
     return lstQuocGia.map((quocgia){
+
       var container = Container(
+        padding: const EdgeInsets.only(left: 32.0, right: 16.0, top: 16.0, bottom: 16.0),
         decoration: index % 2 == 0?
         new BoxDecoration(color: const Color(0xFFb0e0e6)):
         new BoxDecoration(
             color: const Color(0xFF7ec0ee)
         ),
         child: new Column(
+          mainAxisSize: MainAxisSize.max,
           children: <Widget>[
             new GestureDetector(
               onTap: () async {
@@ -36,13 +39,23 @@ class ListViewExampleState extends State<ListQuocGia> {
               },
               child: new Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
                 children: <Widget>[
-                  new Image.asset(quocgia.image, fit: BoxFit.scaleDown,),
+                  new Image.asset(quocgia.image, fit: BoxFit.scaleDown,width: 70.0,
+                    height: 70.0,),
                   new Column(
                     children: <Widget>[
-                      new Text(quocgia.englishName),
-                      new Text(quocgia.vnName)
+                      new Text(quocgia.englishName,
+                        style: TextStyle(
+                            decoration: TextDecoration.none,
+                            fontSize: 20.0
+                        ),),
+                      new Text(quocgia.vnName,
+                        style: TextStyle(
+                            decoration: TextDecoration.none,
+                            fontSize: 20.0
+                        ),),
                     ],
                   )
                 ],

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tienganhchobe/startscreen.dart';
+import 'package:flutter/services.dart';
+import 'package:kids/ChuyenManHinh.dart';
+import 'package:kids/introduce.dart';
+import 'package:kids/startscreen.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -26,7 +29,13 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return WillPopScope(
+
+        onWillPop: ()async{
+          Navigator.of(context).pushReplacement(new MaterialPageRoute(builder: (context) => MyApp()),);
+          return true;
+        },
+      child: new Scaffold(
       body:
       new Container(
         decoration: BoxDecoration(
@@ -39,10 +48,10 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
 
               new GestureDetector(
-                onTap: (){
-                  Navigator.push(
-                    context,
-                    new MaterialPageRoute(builder: (context) => new StartScreen()),
+                onTap: () {
+                  Navigator.pushReplacement(context,
+                    new MaterialPageRoute(builder: (context) => StartScreen()
+                    ),
                   );
                 },
                 child: new Image.asset(
@@ -53,20 +62,33 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
 
+              new GestureDetector(
+                  onTap: (){
+                    Navigator.of(context).pushReplacement(
 
-              new Image.asset(
-                'assets/gthieu.png',
-                fit: BoxFit.scaleDown,
-                width: 100.0,
-                height: 100.0,
+                      new MaterialPageRoute(builder: (context) => new Introduce()),
+                    );
+                  },
+                  child:new Image.asset(
+                    'assets/gthieu.png',
+                    fit: BoxFit.scaleDown,
+                    width: 100.0,
+                    height: 100.0,
+                  ),
               ),
 
-              new Image.asset(
-                'assets/exit.png',
-                fit: BoxFit.scaleDown,
-                width: 100.0,
-                height: 100.0,
-              )
+              new GestureDetector(
+                onTap: (){
+                  _onExitPressed();
+                },
+                child:new Image.asset(
+                  'assets/exit.png',
+                  fit: BoxFit.scaleDown,
+                  width: 100.0,
+                  height: 100.0,
+                )
+              ),
+
             ]
 
         ),
@@ -74,7 +96,32 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: const EdgeInsets.all(0.0),
         alignment: Alignment.center,
       ),
-
+      )
     );
+  }
+  Future<bool> _onExitPressed() {
+    return showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text('Are you sure?'),
+            content: Text('You are going to exit the application!!'),
+            actions: <Widget>[
+              FlatButton(
+                child: Text('NO'),
+                onPressed: () {
+                  Navigator.of(context).pop(false);
+                },
+              ),
+              FlatButton(
+                child: Text('YES'),
+                onPressed: () {
+                  SystemNavigator.pop();
+                  return true;
+                },
+              ),
+            ],
+          );
+        });
   }
 }

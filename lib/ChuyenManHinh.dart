@@ -1,9 +1,11 @@
-import 'package:flutter/material.dart';
-import 'package:tienganhchobe/main.dart';
+import 'dart:async';
 
+import 'package:flutter/material.dart';
+import 'package:kids/main.dart';
 void main() {
   runApp(new MyApp());
 }
+
 class MyApp extends StatelessWidget {
 
   @override
@@ -28,6 +30,17 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  void nextScreen(){
+    Navigator.pushReplacement(context,
+
+      new MaterialPageRoute(builder: (context) => HomePage()),
+    );
+  }
+  @override
+  void initState(){
+    super.initState();
+    Timer(Duration(seconds: 5), nextScreen);
+  }
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
@@ -36,12 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
         image: DecorationImage(
         image: AssetImage("assets/hello.jpg"), fit: BoxFit.fill)),
         child: new GestureDetector(
-          onTap: (){
-            Navigator.push(
-                context,
-                new MaterialPageRoute(builder: (context) => new HomePage()),
-            );
-          },
+
         ),
         )
     );
